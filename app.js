@@ -10,11 +10,11 @@ import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 const app = express();
 
-app.use(helmet());
-app.set("view engine", "pug"); // 뷰 엔진 설정
-app.use(cookieParser()); // 세션
-app.use(bodyParser.json()); // json 사용하기 위함
-app.use(bodyParser.urlencoded({extended: true})); // 정보 
+app.use(helmet()); // 보안을 위한 설정. 공식 문서 권장.
+app.set("view engine", "pug"); // 뷰 엔진 설정.
+app.use(cookieParser()); // 세션.
+app.use(bodyParser.json()); // json 사용하기 위함.
+app.use(bodyParser.urlencoded({extended: true})); // 정보.
 app.use(morgan("dev"));
 
 app.use(localsMiddleware);
