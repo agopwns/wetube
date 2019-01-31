@@ -10,7 +10,7 @@ const VideoSchema = new mongoose.Schema({
         required: "Title is required"
     },
     description: String,
-    Views: {
+    views: {
         type: Number,
         defulat: 0
     },
@@ -20,7 +20,7 @@ const VideoSchema = new mongoose.Schema({
     },
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Video"
+        ref: "Comment"
     }]
 });
 
