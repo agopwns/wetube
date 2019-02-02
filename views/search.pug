@@ -2,9 +2,9 @@ extends layouts/main
 include mixins/videoBlock
 
 block content
-    .search__header
+    .search_header
         h3 Searching for: #{searchingBy}
-    .search__videos
+    .search_videos
         each item in videos  
             +videoBlock({
                 title:item.title,
