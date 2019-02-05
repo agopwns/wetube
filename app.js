@@ -15,6 +15,7 @@ app.set("view engine", "pug"); // 뷰 엔진 설정.
 
 // 컨트롤러, 루트는 확인하지 않고 파일만 확인
 app.use("/uploads", express.static("uploads")); 
+app.use("/static", express.static("static")); 
 app.use(cookieParser()); // 세션.
 app.use(bodyParser.json()); // json 사용하기 위함.
 app.use(bodyParser.urlencoded({extended: true})); // 정보.
