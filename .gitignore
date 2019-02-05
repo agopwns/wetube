@@ -83,3 +83,5 @@ static
 
 package-lock.json
 
+static/styles.css
+static/main.js
