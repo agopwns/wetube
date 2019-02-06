@@ -31,8 +31,6 @@ export const postJoin = async (req, res, next) => {
     }
 };
 
-
-
 export const getLogin = (req, res) => 
     res.render("login", { pageTitle : "Login" });
 
@@ -41,10 +39,39 @@ export const postLogin = passport.authenticate('local', {
     successRedirect: routes.home
 });
 
+export const githubLogin = passport.authenticate("github");
 
+export const githubLoginCallback = async (accessToken, refreshToken, profile, cb) => {
+    const { 
+        _json: { id, avatar_url, name, email } 
+    } = profile;
+    try {
+        const user = await User.findOne({ email })
+        if(user){
+            user.gitHubId = id;
+            user.save();
+            return cb(null, user);
+        } 
+        const newUser = await User.create({
+            email,
+            name,
+            gitHubId: id,
+            avatar_url: avatar_url
+        });
+        return cb(null, newUser);
+        
+    } catch (error) {
+        return cb(error); 
+    }
+}
+
+export const postGithubLogIn = (req, res) => {
+    res.redirect(routes.home);
+}
 
 export const logout = (req, res) => {
     // ToDo: Porcess Log Out
+    req.logout();
     res.redirect(routes.home);
 };
 
