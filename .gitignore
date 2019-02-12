@@ -77,12 +77,14 @@ typings/
 .fusebox/
 uploads
 uploads/videos/
-static/
+
 
 # DynamoDB Local files
 .dynamodb/
 
 package-lock.json
 
+# Static CSS
+static
 static/styles.css
 static/main.js
