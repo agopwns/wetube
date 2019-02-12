@@ -76,7 +76,8 @@ typings/
 # FuseBox cache
 .fusebox/
 uploads
-static
+uploads/videos/
+static/
 
 # DynamoDB Local files
 .dynamodb/
