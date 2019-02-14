@@ -78,7 +78,6 @@ typings/
 uploads
 uploads/videos/
 
-
 # DynamoDB Local files
 .dynamodb/
 
