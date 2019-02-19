@@ -71,20 +71,27 @@ const formatDate = seconds => {
 };
 
 function getCurrentTime(){
-    currentTime.innerHTML = formatDate(videoPlayer.currentTime);
+    currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
 }
 
 function setTotalTime(){
-    const totalTimeString = formatDate(videoPlayer.duration);
+    const totalTimeString = formatDate(Math.floor(videoPlayer.duration));
     totalTime.innerHTML = totalTimeString;
     setInterval(getCurrentTime, 1000);
 }
 
+function handleEnded(){
+    videoPlayer.currentTime = 0;
+    playBtn.innerHTML = '<i class="fas fa-play"></i>'; 
+}
+
 function init(){
+    videoPlayer.currentTime = 40;
     playBtn.addEventListener("click", handlePlayClick);
     volumnBtn.addEventListener("click", handleVolumnClick);
     fullScrnBtn.addEventListener("click", goFullScreen);
     videoPlayer.addEventListener("loadedmetadata", setTotalTime);
+    videoPlayer.addEventListener("ended", handleEnded);
 }
 
 if(videoContainer){
